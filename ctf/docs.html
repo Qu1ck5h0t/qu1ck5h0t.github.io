@@ -1,0 +1,48 @@
+<html style="background-color:black;text-decoration: none;">
+<title>Qu1ck5h0t's Cryptodocs</title>
+<link rel="icon" href="https://raw.githubusercontent.com/Qu1ck5h0t/qu1ck5h0t.github.io/main/favicon.ico">
+<div id="doc"style="position: fixed;top: 0;margin-top: 0;left:300px;z-index: 1;font-family: Arial;color:#586d7d"></div>
+
+<div style="color:#586d7d; text-decoration: none;">
+<h4 style="margin-bottom: -12;">Qu1ck5h0t's Very Nice Sidebar</h4><br>
+<a href="#intro">Introduction</a><br>
+<a href="#primes">Primes and Pseudoprimes</a><br>
+<a href="#lattices">Lattices</a><br><br>
+<a href="https://qu1ck5h0t.github.io/ctf">Back to my CTF page</a><br><br>
+Excellent news!<br>
+<a href="https://idktheflag.sh/">My team</a> is granted perpetual,<br>
+non exclusive, royalty free<br>
+rights to displaying <a href="https://docs.idktheflag.sh/">these docs</a>!<br>
+</div>
+
+<script>
+  function render() {
+    const hash = window.location.hash || "#intro";
+
+    if (hash === "#intro") {
+      document.getElementById("doc").innerHTML = `<h1>Introduction to Crypto</h1><h2 style='margin:0;'>What is CTF Crypto?</h2><br>
+Hey guys, Qu1ck5h0t here. I'm one of the crypto guys on the team, and I just so happen to be a founder/captain. I'm gonna walk you guys through the basics of CTF cryptography without the <a href="https://i.ibb.co/S4m2QVcB/image.png">clanker slop</a> (we have an unapologetically robophobic culture here at idk).<br></br>
+Here's a secret they don't tell you: fundamentally, it's just maths. If you can read maths and read code, you're golden. But if you're here, chances are you can't read maths. That's fine, because that's what I'm sacrificing my precious 1am time for instead of doing my chemistry coursework. But first, some yapping.<h2>Why do CTF crypto?</h2>Great question, because I've been asking myself this as well. Sure, most websites report the salary of a cryptographer to be somewhere between $100-200k USD, and although chances are you end up somewhere else in cyber, your crypto skills will come in use anywhere you go. So why do I do crypto? Because it makes my brain big! No, seriously, some say crypto is the hardest part of CTF and an argument I'd make in favour of that stance is that it's the only CTF category that links maths and programming to real world attacks, or in other words you got a 3 in 1! Still not convinced? It's really high demand since everybody wants to do web or forensics or rev. In fact, hard crypto challs are some of the hardest challs to AI solve, so you get to keep your job (as of 2026). Congratulations, you're now an endangered species!
+<br><br>Ok now onto an overview of the cool stuff you'll be doing.<h2>Brief overview of content</h2>- Number theory and Lattices (assuming you know basic encoding and ciphers, this will get you a GOATED foundation that makes crypto easy)<br>- RSA Challs (super easy but often hidden in places that will make you cry)<br>- ECC (This stuff is pretty tough, but you'll be fine if your foundations are good)<br>- Hash Functions (essentially weak hash + wordlists + birthday attack)<br>- Block Ciphers (remember kids, you can't break AES but they'll ALWAYS wrongly configure it)<br>- PRNG (if it doesn't say CSPRNG, it can be broken. If it says CSPRNG and you see it in a chall, it's not CSPRNG)<br>- Blockchain (actually I've seen people list this as its own category, and most blockchain challs are just smart contract exploits. I'll run ya through the crypto aspects of it though, to give you an idea of what's under the hood)<br>- Steganography (again, mostly a separate category but sometimes there's a lot of maths in it and that's where I'd claim a territory dispute)<br><br>Lastly, do <a href="https://play.picoctf.org/practice">PicoGym</a> and <a href="https://cryptohack.org">Cryptohack</a> along with whatever I write here. No, don't go running off *now*, I just caught your attention :(<br><br>But seriously, those things help a lot. But more importantly, do real CTF challs in live CTFs. That's how you actually get gud.`;
+    } else if (hash === "#primes") {
+      document.getElementById("doc").innerHTML = `<h1>Primes and Pseudoprimes</h1><h2 style='margin:0;'>What is a prime?</h2><br>A prime number is an integer that can only be divided by 1 and itself. It's kind of a really big deal because cryptography foundationally works upon the confidence of some numbers being prime, but more on that later. Right now, we're more concerned with the primes themselves, and coprimes too now that I think of it.<br><h2>What is a coprime?</h2>Two numbers are said to be coprimes if their greatest common divisor is 1. Or in other words, they share no factors other than 1. Think 6 and 7, 6 is composite (not prime) but shares no factors with 7 (prime). It's pretty easy to figure out that any prime is coprime to all integers except ones that use the prime as a factor. However, composites can be coprime as well, such as 4 and 9 (which unfortunately is not as funny as SIX SEVEN). Let's get back to primes.
+<br><h2>Prime, time and rhyme</h2>Fun fact: the time it takes to confirm whether a number is prime or not scales with the size of the candidate. In fact, I'd like you to consider <b>time</b> as a <b>persistent factor of consideration</b> in cryptography. This is because computers take time to perform operations, and with how crypto functions scale, we think of <i>how long it takes to solve</i> just as much as, if not more than <i>can we find a shortcut</i>, most of the <i><b>time</b></i> (ba dum tss). With that said, people are busy and we can't be bothered with spending years checking every possible factor of a number to see if it's prime. Hence, we resort to <i>shortcuts</i> called <i>primality tests</i>.<br><h2>Testing primes</h2>Throughout the years, some smart people have come up with algorithms to test whether a number is prime without exhaustively searching for factors. They speed things up by being probabalistic rather than certain, which means a lot of the safety we have on the internet is built on gambling (cool eh?). If alarms are screaming in your head when you hear "probability", you got the right instinct. Let's quickly go over the main ones to see why your instinct is on point.<br><h4 style='margin-bottom:0;'>Fermat test</h4>Given a candidate n, take any coprime integer a and raise it to the power n-1. If a<sup>n-1</sup>≡1 (mod n), n is probably prime, else it's composite. NOW LET'S BREAK THIS TEST! Find the smallest composite number that fools this test with 2 as a witness, aka in base2! (hint: what can you code if a=2?)<br><br><b>WELCOME TO YOUR FIRST CTF CHALL! ENTER THE FLAG BELOW!</b><br><input type="text" oninput="this.value === 'qu1ck{341}' ? this.value = 'CORRECT' : null" placeholder="qu1ck{flag}" style="background-color: #222222; color: white; border: 1px solid #555;"><br>Great job! The number you just found is called a Poulet number, and we'll look into more numbers like it in the next section. But for now, more tests!`;
+    } else if (hash === "#lattices") {
+      document.getElementById("doc").innerHTML = "<h1>Lattices</h1>";
+    }
+  }
+
+  window.addEventListener("hashchange", render);
+  render();
+</script>
+
+<style>
+a {
+  text-decoration: none;
+  color: #6262e3;
+}
+
+a:visited {
+  color: #6262e3; 
+}
+</style>
