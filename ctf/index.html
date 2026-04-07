@@ -53,12 +53,6 @@ setTimeout(() => {
         cursor.style.visibility =
             cursor.style.visibility === "hidden" ? "visible" : "hidden";
     }, 800);
-    const a = document.body;
-    a.innerHTML = a.innerHTML.replace("ABOUT", '<a href="https://qu1ck5h0t.github.io/ctf/about">ABOUT</a>');
-    a.innerHTML = a.innerHTML.replace("CRYPTO", '<a href="https://qu1ck5h0t.github.io/ctf/docs">CRYPTO</a>');
-    a.innerHTML = a.innerHTML.replace("WRITEUPS", '<a href="https://qu1ck5h0t.github.io/ctf/about">WRITEUPS</a>');
-    a.innerHTML = a.innerHTML.replace("TOOLS", '<a href="https://qu1ck5h0t.github.io/ctf/about">TOOLS</a>');
-    a.innerHTML = a.innerHTML.replace("BACK", '<a href="https://qu1ck5h0t.github.io/ctf/about">BACK</a>');
     document.addEventListener("keydown", (e) => {
         if (e.key === "Backspace") {
             buffer = buffer.slice(0, -1);
@@ -72,4 +66,13 @@ setTimeout(() => {
                 line.textContent = buffer;
     });
 }, 2400);
+</script>
+
+<script> setTimeout(() => {
+    const a = document.body;
+    a.innerHTML = a.innerHTML.replace("ABOUT", '<a href="https://qu1ck5h0t.github.io/ctf/about">ABOUT</a>');
+    a.innerHTML = a.innerHTML.replace("CRYPTO", '<a href="https://qu1ck5h0t.github.io/ctf/docs">CRYPTO</a>');
+    a.innerHTML = a.innerHTML.replace("WRITEUPS", '<a href="https://qu1ck5h0t.github.io/ctf/about">WRITEUPS</a>');
+    a.innerHTML = a.innerHTML.replace("TOOLS", '<a href="https://qu1ck5h0t.github.io/ctf/about">TOOLS</a>');
+    a.innerHTML = a.innerHTML.replace("BACK", '<a href="https://qu1ck5h0t.github.io/ctf/about">BACK</a>'); }, 2401);
 </script>
