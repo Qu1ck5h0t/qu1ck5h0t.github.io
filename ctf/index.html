@@ -15,10 +15,11 @@ const lines = String.raw`
 
 
 Welcome to Qu1ck5h0t's CTF homepage! Enter the following COMMANDS to navigate my documents!
-ABOUT - Learn more about my CTF life and activity.
+ABOUT - Learn more about my CTF life and activity (too lazy to write rn).
 CRYPTO - Read Qu1ck5h0t's Cryptodocs™, a comprehensive wiki about EVERYTHING you need to know in CTF cryptography (may be incomplete.)
-WRITEUPS - Read writeups of the challs I've done.
+WRITEUPS - Read writeups of the challs I've done (will put up later).
 TOOLS - Find a list of my CTF tools (coming soon).
+BACK - Return to my homepage.
 
 `.split("\n");
 document.addEventListener("DOMContentLoaded", () => {
@@ -63,7 +64,8 @@ setTimeout(() => {
         else if (e.keyCode === 13 && buffer === "CRYPTO") {window.location.replace("https://qu1ck5h0t.github.io/ctf/docs");}
         else if (e.keyCode === 13 && buffer === "WRITEUPS") {window.location.replace("https://qu1ck5h0t.github.io/ctf/writeups");}
         else if (e.keyCode === 13 && buffer === "TOOLS") {window.location.replace("https://qu1ck5h0t.github.io/ctf/tools");}
+       else if (e.keyCode === 13 && buffer === "BACK") {window.location.replace("https://qu1ck5h0t.github.io/");}
                 line.textContent = buffer;
     });
-}, 2300);
+}, 2400);
 </script>
