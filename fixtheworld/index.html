@@ -1,0 +1,56 @@
+<head>
+<title>Qu1ck5h0t FIXES THE WORLD</title>
+<link rel="icon" href="https://raw.githubusercontent.com/Qu1ck5h0t/qu1ck5h0t.github.io/main/favicon.ico">
+</head>
+<h1> Qu1ck5h0t's helpful tool that removes senseless design bloat off the internet! </h1>
+<h2> AWESOME CLEAN 2000s front end UI borrowed from <a href="https://qu1ck5h0t.xyz/discord-retriever/">another cool project</a></h2>
+<h4 style="line-height:0.7;"> Anyways, I generously grant you the choice to select ONLY WHAT YOU NEED from the boxes below, which will be packed neatly in a chrome extension.<br></br>Like the other project, this is hosted entirely on <a href="https://github.com/Qu1ck5h0t/qu1ck5h0t.github.io/tree/main/fixtheworld">github pages</a>, but what's even cooler is these scripts were first hosted on another public repo! <a href="https://github.com/Qu1ck5h0t/FIX-THE-WORLD/tree/main">Check it out!</a><br></br>Why not use ublock origin instead? Well some of these change web elements to look less intrusive which ublock can't do, but other than that I have no bloody clue!</h4>
+<body style="background:linear-gradient(#1f3154, #000000);color:#6580b5;font-family: Arial">
+</body>
+<script src="jszip.min.js"></script>
+<div id="list"></div>
+<button style="background-color: blue; color: white;" onclick="p()">THANK YOU QU1CK5H0T</button>
+<script>
+  const S = [
+    ["https://discord.com/*", `(()=>{d=document;S='[class*="mentioned"]';t=d.createElement('style');t.textContent=S+'::before{background:transparent!important}';d.head.appendChild(t);(f=_=>d.querySelectorAll(S).forEach(e=>e.style.background='#101010'))();new MutationObserver(f).observe(d.body,{childList:1,subtree:1})})();`, "Make Discord Ping Highlights Grey"],
+    ["https://discord.com/*", `(()=>{const f=()=>document.querySelectorAll('[class^=numberBadge]').forEach(e=>e.style.backgroundColor='grey');f();new MutationObserver(f).observe(document.body,{childList:1,subtree:1})})();`, "Make Discord Pings Grey"],
+    ["https://docs.google.com/*", `(()=>{d=document;s='.kixWizBarkickWrapper,#docs-sidekick-button-container,#docs-gemini-menu';f=_=>d.querySelectorAll(s).forEach(e=>e.remove());f();new MutationObserver(f).observe(d.documentElement,{childList:1,subtree:1})})();`, "Remove Gemini from Google Docs"],
+    ["https://gemini.google.com/*", `(()=>{const f=()=>document.querySelectorAll('[class^=assistant-messages-primary-container]').forEach(e=>e.remove());f();new MutationObserver(f).observe(document.body,{childList:1,subtree:1})})();`, "Remove synthetic personalisation from Gemini prompt"]
+  ];
+
+  const l = document.getElementById('list');
+  S.forEach((x, i) => {
+    l.innerHTML += `<label><input type="checkbox" value="${i}" checked> ${x[2]}</label><br>`;
+  });
+
+  async function p() {
+    const z = new JSZip();
+    const v = [...document.querySelectorAll('input:checked')].map(e => e.value);
+    if (!v.length) return;
+
+    const g = {};
+    v.forEach(i => {
+      const [m, c] = S[i];
+      const n = `${i}.js`;
+      z.file(n, c);
+      (g[m] = g[m] || []).push(n);
+    });
+
+    const o = {
+      manifest_version: 3,
+      name: "Fix the World",
+      version: "1",
+      content_scripts: Object.entries(g).map(([m, f]) => ({
+        matches: [m],
+        js: f
+      }))
+    };
+
+    z.file("manifest.json", JSON.stringify(o));
+    const t = await z.generateAsync({ type: "blob" });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(t);
+    a.download = "thank-you-qu1ck5h0t.zip";
+    a.click();
+  }
+</script>
